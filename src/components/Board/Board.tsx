@@ -12,6 +12,24 @@ import {
   matchCards,
 } from "../store/boardSlice";
 
+interface Card {
+  src: string;
+  matched: boolean;
+  id: number;
+}
+interface BoardState {
+  cards: Card[];
+  turns: number;
+  choiceOne: Card | null;
+  choiceTwo: Card | null;
+  disabled: boolean;
+}
+
+// Далі вкажіть загальний тип стану вашого додатку
+interface RootState {
+  board: BoardState;
+}
+
 const cardImages: Card[] = [
   { src: "/img/deer.jpeg", matched: false, id: 1 },
   { src: "/img/deer_2.jpg", matched: false, id: 2 },
@@ -24,7 +42,7 @@ const cardImages: Card[] = [
 function Board() {
   const dispatch = useDispatch();
   const { cards, turns, choiceOne, choiceTwo, disabled } = useSelector(
-    (state) => state.board
+    (state: RootState) => state.board
   );
 
   useEffect(() => {
