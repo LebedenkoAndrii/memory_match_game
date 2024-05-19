@@ -1,5 +1,6 @@
 import React from "react";
 import cardStyles from "./Card.module.css";
+import backSide from "./cover.jpeg";
 
 interface Card {
   src: string;
@@ -32,7 +33,7 @@ const MemoryCard: React.FC<Props> = ({
         <img className={cardStyles.front} src={card.src} alt="card-front" />
         <img
           className={cardStyles.back}
-          src="/public/img/cover.jpeg"
+          src={backSide}
           onClick={handleClick}
           alt="card-back"
         />
